@@ -22,6 +22,12 @@ class ArtikelController extends Controller
         return view('admin.kelola-berita.index', compact('produks'));
     }
 
+    public function userDashboard()
+    {
+        $produks = Produk::all();
+        return view('user', compact('produks'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

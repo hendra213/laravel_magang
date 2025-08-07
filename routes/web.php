@@ -4,6 +4,7 @@ use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\BeritaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LandingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,9 +20,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/landing', function () {
-    return view('landing');
-});
+// Route::get('/landing', function () {
+//     return view('landing');
+// });
+Route::get('/landing', [LandingController::class, 'index'])->name('landing');
+
 
 Route::get('/login', [UserController::class, 'index'])->name('login');
 Route::post('/login', [UserController::class, 'login'])->name('login.post');
@@ -43,9 +46,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/kelola-berita', [ArtikelController::class, 'artikel'])->name('admin.artikel');
 });
 
-// Route::middleware(['auth', 'role:user'])->group(function () {
-//     Route::get('/user/dashboard', [ArtikelController::class, 'index'])->name('admin.dashboard');
-// });
+Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::get('/user/dashboard', [ArtikelController::class, 'userDashboard'])->name('user.dashboard');
+});
 
 // Route::get('/dashboard', function () {
 //     return view('admin.index');
