@@ -18,13 +18,13 @@ class ArtikelController extends Controller
 
     public function artikel()
     {
-        $produks = Produk::all();
+        $produks = Produk::latest()->get();
         return view('admin.kelola-berita.index', compact('produks'));
     }
 
     public function userDashboard()
     {
-        $produks = Produk::all();
+        $produks = Produk::latest()->get();
         return view('user', compact('produks'));
     }
 

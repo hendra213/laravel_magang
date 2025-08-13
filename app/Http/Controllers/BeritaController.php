@@ -27,29 +27,15 @@ class BeritaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-       $request->validate([
-        'nama' => 'required|string|max:255',
-        'jumlah' => 'required|integer',
-        'harga' => 'required|integer',
-        'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-        'tanggal_kadaluarsa' => 'required|date',
-    ]);
-
-    $data = $request->only(['nama', 'jumlah', 'harga', 'tanggal_kadaluarsa']);
-
+public function store(Request $request)
+{
+    $data = $request->all();
     if ($request->hasFile('foto')) {
-        $file = $request->file('foto');
-        $filename = time() . '_' . $file->getClientOriginalName();
-        $file->storeAs('public/foto_produk', $filename);
-        $data['foto'] = $filename;
+        $data['foto'] = $request->file('foto')->store('foto_produk', 'public');
     }
-
-    Produk::create($data);
-
-    return redirect()->back()->with('success', 'Produk berhasil disimpan!');
-    }
+    $produk = Produk::create($data);
+    return response()->json($produk);
+}
 
     /**a
      * Display the specified resource.
@@ -70,39 +56,23 @@ class BeritaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        $produk = Produk::findOrFail($id);
 
-    $produk->nama = $request->nama;
-    $produk->jumlah = $request->jumlah;
-    $produk->harga = $request->harga;
-    $produk->tanggal_kadaluarsa = $request->tanggal_kadaluarsa;
-
+    public function update(Request $request, $id)
+{
+    $produk = Produk::findOrFail($id);
+    $data = $request->all();
     if ($request->hasFile('foto')) {
-        $path = $request->file('foto')->store('produk', 'public');
-        $produk->foto = $path;
+        $data['foto'] = $request->file('foto')->store('foto_produk', 'public');
     }
-
-    $produk->save();
-
-    return redirect()->back()->with('success', 'Produk berhasil diperbarui!');
-    }
-
+    $produk->update($data);
+    return response()->json($produk);
+}
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-      $produk = Produk::findOrFail($id);
-
-    // Hapus file foto dari storage jika ada
-    if ($produk->foto && Storage::exists('public/' . $produk->foto)) {
-        Storage::delete('public/' . $produk->foto);
-    }
-
-    $produk->delete();
-
-    return redirect()->back()->with('success', 'Produk berhasil dihapus.');
-    }
+    public function destroy($id)
+{
+    Produk::findOrFail($id)->delete();
+    return response()->json(['status' => 'success']);
+}
 }

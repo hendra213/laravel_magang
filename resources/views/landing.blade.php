@@ -20,13 +20,11 @@
                 </div>
                 <div class="hidden sm:flex sm:items-center justify-center flex-1">
                     <div class="flex space-x-4">
-                        <a href="#"
+                        <a href="#hero"
                             class="px-3 py-2 text-sm font-medium text-gray-900 hover:text-indigo-600">Home</a>
-                        <a href="#"
+                        <a href="#features"
                             class="px-3 py-2 text-sm font-medium text-gray-900 hover:text-indigo-600">Features</a>
-                        <a href="#"
-                            class="px-3 py-2 text-sm font-medium text-gray-900 hover:text-indigo-600">About</a>
-                        <a href="#"
+                        <a href="#footer"
                             class="px-3 py-2 text-sm font-medium text-gray-900 hover:text-indigo-600">Contact</a>
                     </div>
                 </div>
@@ -46,22 +44,20 @@
         </div>
         <div class="hidden sm:hidden" id="navbar-default">
             <div class="pt-2 pb-3 space-y-1">
-                <a href="#"
+                <a href="#hero"
                     class="block pl-3 pr-4 py-2 text-base font-medium text-gray-900 hover:bg-indigo-50 hover:text-indigo-600">Home</a>
-                <a href="#"
+                <a href="#features"
                     class="block pl-3 pr-4 py-2 text-base font-medium text-gray-900 hover:bg-indigo-50 hover:text-indigo-600">Features</a>
-                <a href="#"
-                    class="block pl-3 pr-4 py-2 text-base font-medium text-gray-900 hover:bg-indigo-50 hover:text-indigo-600">About</a>
-                <a href="#"
+                <a href="#footer"
                     class="block pl-3 pr-4 py-2 text-base font-medium text-gray-900 hover:bg-indigo-50 hover:text-indigo-600">Contact</a>
-                <a href="#"
+                <a href="{{ route('login') }}"
                     class="block pl-3 pr-4 py-2 text-base font-medium text-gray-900 hover:bg-indigo-50 hover:text-indigo-600">Login</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative w-full bg-indigo-600 text-white md:py-20">
+    <section id="hero" class="relative w-full bg-indigo-600 text-white md:py-20">
         <!-- Carousel Background -->
         <div id="hero-carousel" class="absolute inset-0 -z-10" data-carousel="slide">
             <div class="relative h-full overflow-hidden rounded-lg">
@@ -102,7 +98,7 @@
     </section>
 
     <!-- Features Section -->
-    <section class="min-h-screen flex items-start bg-gray-50 dark:bg-gray-900 py-16">
+    <section id="features" class="min-h-screen flex items-start bg-gray-50 dark:bg-gray-900 py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 
             <!-- Heading -->
@@ -172,7 +168,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white">
+    <footer id="footer" class="bg-gray-800 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
@@ -196,7 +192,7 @@
                 </div>
             </div>
             <div class="mt-8 border-t border-gray-700 pt-8 text-center">
-                <p class="text-gray-300">&copy; 2025 Nama Perusahaan. All rights reserved.</p>
+                <p class="text-gray-300">&copy; 2025 Gedang Goreng. All rights reserved.</p>
             </div>
         </div>
     </footer>
