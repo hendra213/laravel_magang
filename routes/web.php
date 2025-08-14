@@ -32,10 +32,10 @@ Route::get('/register', [UserController::class, 'register_index'])->name('regist
 
 Route::post('/logout', [UserController::class, 'logout'])->name('logout.post');
 
-Route::get('/admin/addberita', [BeritaController::class, 'ShowAddFrom'])->name('form.addberita');
-Route::post('/admin/post-berita', [BeritaController::class, 'store'])->name('addberita.store');
-Route::put('/admin/update-berita/{id}', [BeritaController::class, 'update'])->name('addberita.update');
-Route::delete('admin/delete-berita/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
+// Route::get('/admin/addberita', [BeritaController::class, 'ShowAddFrom'])->name('form.addberita');
+// Route::post('/admin/post-berita', [BeritaController::class, 'store'])->name('addberita.store');
+// Route::put('/admin/update-berita/{id}', [BeritaController::class, 'update'])->name('addberita.update');
+// Route::delete('admin/delete-berita/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
 
 // Route::get('/dashboard', [ArtikelController::class, 'index'])->name('dashboard');
 
@@ -44,6 +44,7 @@ Route::delete('admin/delete-berita/{id}', [BeritaController::class, 'destroy'])-
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [ArtikelController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/kelola-berita', [ArtikelController::class, 'artikel'])->name('admin.artikel');
+    Route::resource('/admin-product', BeritaController::class);
 });
 
 Route::middleware(['auth', 'role:user'])->group(function () {

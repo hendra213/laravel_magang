@@ -24,7 +24,6 @@
 <div class="p-4 md:ml-64">
     <section class="bg-white px-4 py-8 antialiased dark:bg-gray-900 md:py-16 mt-16">
 
-        {{-- Header dan Tombol --}}
         <div class="flex justify-between mb-4">
             <input type="text" id="tableSearch"
                 class="w-full max-w-xs px-4 py-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white dark:border-gray-600"
@@ -103,8 +102,7 @@ $(function () {
                 text: 'Produk ditambahkan',
                 timer: 2000, // tutup otomatis 2 detik
                 showConfirmButton: false
-            }).then(() => location.reload());
-        
+            }).then(() => location.reload());       
             }
         });
     });
