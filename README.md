@@ -58,30 +58,3 @@ Pastikan kamu sudah menginstal PHP, Composer, Node.js, dan MySQL.
    ```bash
    php artisan serve
    ```
-
-6. **(Opsional) Install dan compile aset frontend:**
-
-   Jika kamu ingin mengubah Tailwind atau menggunakan npm:
-
-   ```bash
-   npm install
-   npm run dev
-   ```
-
----
-
-## 📸 Tampilan Antarmuka
-
-(Tambahkan screenshot jika tersedia, misalnya `public/screenshot.png`)
-
----
-
-## 👨‍💻 Kontributor
-
-- [Nama Kamu](https://github.com/username-kamu)
-
----
-
-## 📄 Lisensi
-
-Proyek ini menggunakan lisensi [MIT](LICENSE).
